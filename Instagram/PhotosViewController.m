@@ -10,6 +10,8 @@
 #import "PhotoCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "PhotoDetailsViewController.h"
+#import "Photo.h"
+#import "User.h"
 
 @interface PhotosViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -53,7 +55,8 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
-        self.photos = responseDictionary[@"data"];
+        NSArray *dictionaries = responseDictionary[@"data"];
+        self.photos = [Photo photosWithDictionaries:dictionaries];
         [self.tableView reloadData];
         
         [self.refreshControl endRefreshing];
@@ -63,21 +66,18 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     headerView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
-    NSDictionary *photo = self.photos[section];
-    NSDictionary *user = photo[@"user"];
-    NSString *username = user[@"username"];
-    NSURL *profileUrl = [NSURL URLWithString:user[@"profile_picture"]];
+    Photo *photo = self.photos[section];
     
     UIImageView *profileView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
     profileView.clipsToBounds = YES;
     profileView.layer.cornerRadius = 15;
     profileView.layer.borderColor = [UIColor colorWithWhite:0.7 alpha:0.8].CGColor;
     profileView.layer.borderWidth = 1;
-    [profileView setImageWithURL:profileUrl];
+    [profileView setImageWithURL:photo.user.profilePicUrl];
     [headerView addSubview:profileView];
     
     UILabel *usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 250, 30)];
-    usernameLabel.text = username;
+    usernameLabel.text = photo.user.username;
     usernameLabel.font = [UIFont boldSystemFontOfSize:16];
     usernameLabel.textColor = [UIColor colorWithRed:8/255.0 green:64/255.0 blue:127/255.0 alpha:1];
     [headerView addSubview:usernameLabel];
@@ -105,11 +105,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
     
-    NSDictionary *photo = self.photos[indexPath.section];
-    NSString *url = [photo valueForKeyPath:@"images.standard_resolution.url"];
+    Photo *photo = self.photos[indexPath.section];
     
     cell.photoView.image = nil;
-    [cell.photoView setImageWithURL:[NSURL URLWithString:url]];
+    [cell.photoView setImageWithURL:photo.standardResolutionUrl];
     
     return cell;
 }

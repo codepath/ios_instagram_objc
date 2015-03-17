@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		226173981AB7BD030073F195 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 226173971AB7BD030073F195 /* User.m */; };
+		2261739B1AB7BD0A0073F195 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2261739A1AB7BD0A0073F195 /* Photo.m */; };
 		2265860D19EEB71100FDE296 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265860C19EEB71100FDE296 /* main.m */; };
 		2265861019EEB71100FDE296 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2265860F19EEB71100FDE296 /* AppDelegate.m */; };
 		2265861819EEB71100FDE296 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2265861719EEB71100FDE296 /* Images.xcassets */; };
@@ -33,6 +35,10 @@
 
 /* Begin PBXFileReference section */
 		0F7A2181CF014923B8F2FE39 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		226173961AB7BD030073F195 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		226173971AB7BD030073F195 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		226173991AB7BD0A0073F195 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		2261739A1AB7BD0A0073F195 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		2265860719EEB71100FDE296 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2265860B19EEB71100FDE296 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2265860C19EEB71100FDE296 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,6 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		226173951AB7BCF20073F195 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				226173961AB7BD030073F195 /* User.h */,
+				226173971AB7BD030073F195 /* User.m */,
+				226173991AB7BD0A0073F195 /* Photo.h */,
+				2261739A1AB7BD0A0073F195 /* Photo.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		226585FE19EEB71100FDE296 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +115,7 @@
 		2265860919EEB71100FDE296 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				226173951AB7BCF20073F195 /* Models */,
 				2265863619EEBCB700FDE296 /* Views */,
 				2265863519EEBCA700FDE296 /* View Controllers */,
 				2265860E19EEB71100FDE296 /* AppDelegate.h */,
@@ -312,8 +330,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2261739B1AB7BD0A0073F195 /* Photo.m in Sources */,
 				2265863A19EEBFB800FDE296 /* PhotoCell.m in Sources */,
 				2265861019EEB71100FDE296 /* AppDelegate.m in Sources */,
+				226173981AB7BD030073F195 /* User.m in Sources */,
 				2265863319EEBC9500FDE296 /* PhotosViewController.m in Sources */,
 				2265860D19EEB71100FDE296 /* main.m in Sources */,
 				2265863F19EEC56D00FDE296 /* PhotoDetailsViewController.m in Sources */,
